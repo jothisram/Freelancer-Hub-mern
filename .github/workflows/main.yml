@@ -1,4 +1,4 @@
-name: MongoDB Website Workflow (VSCode)
+name: MongoDB Website Workflow
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # This cannot be changed but simulates your VSCode dev setup.
+    runs-on: ubuntu-latest
 
     services:
       mongodb:
@@ -20,16 +20,16 @@ jobs:
       - name: Check Out Code
         uses: actions/checkout@v3
 
-      - name: Set Up Node.js (Same as VSCode)
+      - name: Set Up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # Adjust Node.js version to match your VSCode setup.
+          node-version: '16'
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Start Application
-        run: npm start # Matches what you'd run locally in VSCode.
+      - name: Build Website
+        run: npm run build
 
       - name: Run Tests
         run: npm test
