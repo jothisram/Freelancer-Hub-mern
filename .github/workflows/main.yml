@@ -9,13 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      mongodb:
-        image: mongo:latest
-        ports:
-          - 27017:27017
-        options: --bind_ip_all
-
     steps:
       - name: Check Out Code
         uses: actions/checkout@v3
