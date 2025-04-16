@@ -13,6 +13,9 @@ jobs:
       - name: Check Out Code
         uses: actions/checkout@v3
 
+      - name: Debug Build
+        run: npm run build || echo "Build failed, check the logs!"
+
       - name: Build Website
         run: npm run build
 
