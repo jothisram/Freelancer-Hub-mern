@@ -16,10 +16,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . /api/ -t jothisram/freelancer-hub-mern:latest
+      run: 
+        docker build ./api/ -t jothisram/freelancer-hub-mern-client:latest
+        docker build ./front-end-nextjs/ -t  jothisram/freelancer-hub-mern-server:latest
     - name: push image to docker hub
       run: 
         docker login -u jothisram -p ${{ secrets.DOCKER_HUB_TOKEN }}
-        docker push jothisram/freelancer-hub-mern:latest
+        docker push jothisram/freelancer-hub-mern-client:latest
+        docker push jothisram/freelancer-hub-mern-server:latest
         
  
