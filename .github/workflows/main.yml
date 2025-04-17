@@ -1,17 +1,21 @@
-name: Basic Workflow
+name: Build and Publish image to Docker Hub
+
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check Out Code
-        uses: actions/checkout@v3
-
-      - name: Run Basic Command
-        run: echo "Workflow executed successfully!"
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . /api/ -t jothisram/freelancer-hub-mern:latest
+    - name: push image to docker hub
+      run: docker push jothisram/freelancer-hub-mern:latest
