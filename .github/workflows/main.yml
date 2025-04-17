@@ -18,4 +18,8 @@ jobs:
     - name: Build the Docker image
       run: docker build . /api/ -t jothisram/freelancer-hub-mern:latest
     - name: push image to docker hub
-      run: docker push jothisram/freelancer-hub-mern:latest
+      run: 
+        docker login -u jothisram -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker push jothisram/freelancer-hub-mern:latest
+        
+ 
