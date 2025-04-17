@@ -1,25 +1,20 @@
 name: Build and Publish image to Docker Hub
-
-
 on:
   push:
     branches: 
-       - main
+      - main
    paths:
-       - 'api/Dockerfile'
-       - 'front-end-nextjs/Dockerfile'
+      - 'api/Dockerfile'
+      - 'front-end-nextjs/Dockerfile'
   pull_request:
     branches: [ "main" ]
 
 jobs:
-
-  build:
-
+ publish_image:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
+    - name: checkout
       run: 
         docker build ./api/ -t jothisram/freelancer-hub-mern-client:latest
         docker build ./front-end-nextjs/ -t  jothisram/freelancer-hub-mern-server:latest
